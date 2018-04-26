@@ -34,6 +34,9 @@ app.use('/articles', articles)
 const categories = require('./routes/categories')
 app.use('/categories', categories)
 
+const comments = require('./routes/comments')
+app.use('/comments', comments)
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
