@@ -274,18 +274,18 @@ module.exports = {
     }, {
       title, content, category
     })
-      .then(response => {
-        res.status(200).send({
-          message: 'Update Article success',
-          data: response
-        })
+    .then(response => {
+      res.status(200).send({
+        message: 'Update Article success',
+        data: response
       })
-      .catch(err => {
-        res.status(400).send({
-          message: 'Update Article failed',
-          err: err.message
-        })
+    })
+    .catch(err => {
+      res.status(400).send({
+        message: 'Update Article failed',
+        err: err.message
       })
+    })
   },
   remove: (req, res) => {
     const {id} = req.params
