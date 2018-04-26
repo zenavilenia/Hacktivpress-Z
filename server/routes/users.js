@@ -3,9 +3,9 @@ const {findAll, findById, update, remove} = require('../controllers/user.control
 const {auth} = require('../middleware/auth')
 
 router
-    .get('/', findAll)
-    .get('/:id', findById)
-    .put('/:id', update)
-    .delete('/:id', remove)
+    // .get('/', findAll)
+    // .get('/:id', findById)
+    // .put('/:id', update)
+    // .delete('/:id', remove)
 
 module.exports = router

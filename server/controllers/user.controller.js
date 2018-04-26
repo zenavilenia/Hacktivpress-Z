@@ -25,8 +25,7 @@ module.exports = {
                       let token = jwt.sign(
                           {
                               id: user._id,
-                              email: user.email,
-                              role: user.role
+                              email: user.email
                           },
                           process.env.SECRET)
                       console.log("token--", req.headers.token)
@@ -56,7 +55,7 @@ module.exports = {
           } else {
               password = hash;
               let user = new User({
-                  email, password, role, sendWelcomeMessage: true
+                  email, password
               })
 
               user.save((err, result) => {
