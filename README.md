@@ -1,6 +1,14 @@
 # Hacktivpress-Z
 Repo for my final live code assignment phase 2 using Express, Vue 3, and Mongoose
 
+# Frontend
+Path | Information
+--- | ---
+/ | Main Page : open access for everyone w/o login/signup
+/myarticle | article posted by logged user
+/:categoryid | article by category
+/:categoryid/:articleid | detail article
+
 # End Point
 
 | Route        | HTTP           | Desription  |
