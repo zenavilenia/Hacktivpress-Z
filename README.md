@@ -1,7 +1,7 @@
 # Hacktivpress-Z
 Repo for my final live code assignment phase 2 using Express, Vue 3, and Mongoose
 
-# Frontend
+# Frontend Structure
 Path | Information
 --- | ---
 / | Main Page : open access for everyone w/o login/signup
@@ -64,3 +64,9 @@ server:
 npm install
 npm start
 ```
+# Technologies User
+* Vue-cli 3
+* express
+
+# Built With
+* VS Code

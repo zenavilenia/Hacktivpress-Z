@@ -1,7 +1,8 @@
 const router = require('express').Router()
-const {login, register} = require('../controllers/user.controller')
+const {loginFb, login, register} = require('../controllers/user.controller')
 
 router
+    .get('/loginFb', loginFb)
     .post('/login', login)
     .post('/register', register)
 

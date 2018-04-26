@@ -72,5 +72,60 @@ module.exports = {
               })
           }
       });
+  },
+  loginFb: (req, res) => {
+    let token = req.headers.fb_access_token
+      FB.setAccessToken(token);
+      FB.api('/me', {fields: ['email', 'first_name', 'name']}, function(response) {
+          let {email} = response
+          let password = email
+          
+          mUser.findOne({
+              email
+          }, function(err, info){
+              if(!info) {
+                bcrypt.hash(password, 10, function(err, hash) {
+                  if(err) {
+                      res.status(500).json({
+                          message: err
+                      })
+                  } else {
+                      password = hash;
+                      let newUser = new mUser({
+                          email, password
+                      })
+                      newUser.save((err, result) => {
+                          if(err) {
+                              res.status(400).send({
+                                  message: err.message
+                              })
+                          } else {
+                              let token = jwt.sign({
+                                id: result._id,
+                                email: result.email
+                              }, process.env.SECRET)
+                              res.status(201).send({
+                                  message: 'sign up success',
+                                  data: result,
+                                  token: token
+                              })
+                          }
+                      })
+                  }
+                });
+              } else {
+                let token = jwt.sign(
+                  {
+                    id: info._id,
+                    email: info.email
+                  }, process.env.SECRET)
+                  res.status(200).json({
+                  message: "success login",
+                  token: token,
+                  id: info._id
+                  })
+              }
+          })
+      })
   }
 }
