@@ -25,10 +25,16 @@ db.once('open', function() {
 const index = require('./routes/index')
 app.use('/', index)
 
-const posts = require('./routes/posts')
-app.use('/posts', posts)
+const users = require('./routes/users')
+app.use('/users', users)
 
-const port = process.env.PORT || 3001;
+const articles = require('./routes/articles')
+app.use('/articles', articles)
+
+const categories = require('./routes/categories')
+app.use('/categories', categories)
+
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log(`Server starts on ${port}`)
