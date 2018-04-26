@@ -3,13 +3,17 @@ Repo for my final live code assignment phase 2 using Express, Vue 3, and Mongoos
 
 # End Point
 
+| Route        | HTTP           | Desription  |
+| ------------- |-------------| -----|
+| /login      | POST | login |
+| /register      | POST | register new account |
+
 List of user routes:
 
 | Route        | HTTP           | Desription  |
 | ------------- |-------------| -----|
 | /users      | GET | Get all the users |
 | /users/:id      | GET | Get a single user |
-| /users      | POST | Create a user |
 | /users/:id      | DELETE | Delete a user |
 | /users/:id      | PUT | Update a user with new info |
 
