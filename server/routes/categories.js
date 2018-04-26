@@ -6,6 +6,6 @@ router
     .get('/', findAll)
     .post('/', addCategory)
     .put('/', update)
-    .delete('/', remove)
+    .delete('/:id', remove)
 
 module.exports = router

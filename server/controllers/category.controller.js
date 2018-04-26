@@ -53,7 +53,7 @@ module.exports = {
     },
     remove: (req, res) => {
         Category.remove({
-            _id: req.body.id
+            _id: req.params.id
         })
             .then(result => {
                 res.status(200).send({
