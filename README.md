@@ -1,7 +1,7 @@
 # Hacktivpress-Z
-Repo for my final live code assignment phase 2 using Express, Vue 3, and Mongoose
+Repo for my final live code assignment phase 2 using Express, Vue, and Mongoose
 
-# Frontend Structure
+## Frontend Structure
 Path | Information
 --- | ---
 / | Main Page : open access for everyone w/o login/signup
@@ -9,10 +9,11 @@ Path | Information
 /:categoryid | article by category
 /:categoryid/:articleid | detail article
 
-# End Point
+## End Point
 
 | Route        | HTTP           | Desription  |
 | ------------- |-------------| -----|
+| /loginFb      | GET | login with facebook |
 | /login      | POST | login |
 | /register      | POST | register new account |
 
@@ -50,23 +51,23 @@ List of comments routes:
 | /comments/:id      | DELETE | Delete an comment |
 | /comments/:id      | PUT | Update an comment with new info |
 
-# Usage
-Clone this repo
-
+## Usage
 ```
-client:
+* Clone this repo
+
+* client:
 npm install
 npm run serve
-```
 
-```
-server:
+* server:
 npm install
 npm start
 ```
-# Technologies User
-* Vue-cli 3
-* express
 
-# Built With
+## Technologies User
+* Vue-cli 3
+* Express
+* Mongoose
+
+## Built With
 * VS Code

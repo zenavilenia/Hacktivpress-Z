@@ -10,6 +10,6 @@ const categorySchema = mongoose.Schema({
     timestamps: true
 })
 
-let category = mongoose.model('category', categorySchema)
+const category = mongoose.model('category', categorySchema)
 
 module.exports = category
