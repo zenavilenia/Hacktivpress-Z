@@ -7,7 +7,7 @@ function getPublicUrl(filename) {
 }
 
 const BUCKET_CONFIG = {
-  name: 'upload-e-commerce.zenavilenia.ga'
+  name: 'upload-photo'
 }
 
 module.exports = {

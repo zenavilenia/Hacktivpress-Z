@@ -3,9 +3,9 @@ const {findAll, addCategory, update, remove} = require('../controllers/category.
 const {auth} = require('../middleware/auth')
 
 router
-    .get('/', auth, findAll)
-    .post('/', auth, addCategory)
-    .put('/', auth, update)
-    .delete('/', auth, remove)
+    .get('/', findAll)
+    .post('/', addCategory)
+    .put('/', update)
+    .delete('/', remove)
 
 module.exports = router
