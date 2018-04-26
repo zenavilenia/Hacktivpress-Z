@@ -131,7 +131,7 @@ module.exports = {
     newComment.save()
       .then(response => {
         console.log(response)
-        Post.findByIdAndUpdate({
+        Article.findByIdAndUpdate({
           _id: req.body.id
         }, {
           $push: {
@@ -155,6 +155,114 @@ module.exports = {
         res.status(400).send({
           message: 'Add new answer to post failed',
           err: err.message
+        })
+      })
+  },
+  editLike: (req, res) => {
+    let {id} = req.params
+    let userid = req.headers.decoded.id
+    let action = '';
+
+    Article
+      .find({
+        _id: id
+      })
+      .exec()
+      .then(response => {
+        let likes = response[0].likes;
+        let adaLike = likes.indexOf(userid);
+        let dislikes = response[0].dislikes;
+        let adaDisike = dislikes.indexOf(userid);
+        
+        if(adaDisike != -1) {
+          res.status(400).send({
+            message: 'Sudah ada dislike'
+          })
+        } else {
+          if (adaLike != -1) {
+            action = '$pull'
+          } else {
+            action = '$push'
+          }
+          
+          Article.update({
+            _id:id
+          }, {
+            [action]: {
+              likes: userid
+            }
+          }, {
+            overwrite: false
+          }, function (err, article) {
+            if(!err) {
+              res.status(200).send({
+                message: 'edit like success'
+              })
+            } else {
+              res.status(400).send({
+                message: 'edit like failed'
+              })
+            }
+          })
+        }
+      })
+      .catch(err => {
+        res.status(400).send({
+          message: err
+        })
+      })
+  },
+  editDislike: (req, res) => {
+    let {id} = req.params
+    let userid = req.headers.decoded.id
+    let action = '';
+
+    Article
+      .find({
+        _id: id
+      })
+      .exec()
+      .then(response => {
+        let likes = response[0].likes;
+        let adaLike = likes.indexOf(userid);
+        let dislikes = response[0].dislikes;
+        let adaDisike = dislikes.indexOf(userid);
+        
+        if(adaLike != -1) {
+          res.status(400).send({
+            message: 'Sudah ada like'
+          })
+        } else {
+          if (adaDisike != -1) {
+            action = '$pull'
+          } else {
+            action = '$push'
+          }
+          
+          Article.update({
+            _id:id
+          }, {
+            [action]: {
+              dislikes: userid
+            }
+          }, {
+            overwrite: false
+          }, function (err, article) {
+            if(!err) {
+              res.status(200).send({
+                message: 'edit dislike success'
+              })
+            } else {
+              res.status(400).send({
+                message: 'edit dislike failed'
+              })
+            }
+          })
+        }
+      })
+      .catch(err => {
+        res.status(400).send({
+          message: err
         })
       })
   },
